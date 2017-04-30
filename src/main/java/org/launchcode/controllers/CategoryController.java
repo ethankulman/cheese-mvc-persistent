@@ -26,6 +26,7 @@ public class CategoryController {
 
     private Iterable<Category> categories;
 
+
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model){
         categories = categoryDao.findAll();
