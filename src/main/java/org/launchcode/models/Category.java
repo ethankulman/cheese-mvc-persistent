@@ -34,4 +34,6 @@ public class Category {
     public int getId(){
         return this.id;
     }
+
+    public List<Cheese> getCheeses() { return this.cheeses; }
 }

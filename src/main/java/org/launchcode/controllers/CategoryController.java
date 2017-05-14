@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.validation.Errors;
 
 import javax.validation.Valid;
@@ -51,5 +52,15 @@ public class CategoryController {
         categoryDao.save(category);
         return "redirect:";
 
+    }
+
+    @RequestMapping(value = "{id}", method = RequestMethod.GET)
+    public String viewCategory(Model model, @PathVariable int id){
+        Category category = categoryDao.findOne(id);
+
+        model.addAttribute("category", category);
+        model.addAttribute("title", category.getName());
+        model.addAttribute("cheeses", category.getCheeses());
+        return "category/view";
     }
 }
